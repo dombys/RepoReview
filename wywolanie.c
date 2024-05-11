@@ -247,27 +247,34 @@ printf("\n");
 
 
 /*
-dodaj(Num1, Num2, strlen1);
+if (strlen1 >= strlen2){
+dodaj(wynik, przepisana, strlen1);
+}
+else{
+dodaj(wynik, przepisana, strlen2);
+}
 */
 
 //wypisanie wyniku (kod asm modyfikuje tablicę wynik)
+printf("Wynik działania to:\n");
 if (strlen1 == strlen2){
 for (int i=0; i<strlen1+1; i++){
 printf ("%x", wynik[i]);
 }
 printf("\n");
-
+}
 if (strlen1 > strlen2){
 for (int i=0; i<strlen1+1; i++){
 printf ("%x", wynik[i]);
 }
 printf("\n");
-
+}
 if (strlen1 < strlen2){
 for (int i=0; i<strlen2+1; i++){
 printf ("%x", wynik[i]);
 }
 printf("\n");
+}
 //zwolnienie alokowanych dynamicznie tablic z pamieci
 free(wynik);
 free(przepisana);
