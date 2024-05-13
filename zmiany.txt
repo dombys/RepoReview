@@ -16,9 +16,6 @@ WYWOLANIE.C
 ; dodalem wyswietlanie tablic Num1 i Num2 po konwersji
 ; dodalem wywołanie funkcji doaj z odpowiednimi argumentami
 
-
-Po więcej poprawek w tym kodzie pisz śmialo lecz nie przeginaj, bo oglądam bajke...
-
 EDIT 13.05.2024r.
 Bazując na zmienionym programie:
 
