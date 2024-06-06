@@ -116,3 +116,4 @@ free(sample_arr);
 fclose(wskaz_plik);
 return 0;
 }
+
