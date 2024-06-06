@@ -16,13 +16,13 @@ obrobka:
 	;tworzymy offset teraz dla s[t] modyfikowanych
 	lea edi, [esi + ebx] ;efektywny adres komórki, którą zmienimy proszę
 .loop:
-	movaps xmm2, [edi] ;ten obecny
+	movq xmm2, [edi] ;ten obecny
 	sub edi, ebx
-	movaps xmm3, [edi] ;ten opóźniony
+	movq xmm3, [edi] ;ten opóźniony
 	add edi, ebx ;przywracamy
 	pmulhw xmm3,xmm0
 	paddsw xmm2,xmm3
-	movaps [edi], xmm2
+	movq [edi], xmm2
 	add edi, 16
 	sub dword[ebp+12],8
 	jg .loop
