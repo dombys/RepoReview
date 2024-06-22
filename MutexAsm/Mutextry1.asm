@@ -21,32 +21,29 @@ withdrawing:
        	mov ecx, 1
         lock cmpxchg [mutexvar], ecx ;
         jnz .check_mutex_status
-	; Sekcja krytyczna
+	; Sekcja Krytyczna
 	push dword [sleep_time] ;dodane tylko, by w gdb mozna bylo
 	call sleep				;jak 2. watek sie zapetla na spinlocku
 	add esp, 4
-    	mov ecx, dword [balance]  ; Załaduj saldo konta do ECX
-    	cmp ecx, 700                ; Sprawdź, czy saldo jest wystarczające
-    	jb .insufficient             
+    mov ecx, dword [balance]  ; saldo konta do ecx
+    cmp ecx, 700                ;wystarczajaco funduszy ?
+    jb .insufficient             
 	sub ecx, 700                
-    	mov dword [balance], ecx  ; Zaktualizuj saldo konta
+    mov dword [balance], ecx  ; aktualizauj saldo po wyplacie
 	push msg1
 	call printf
 	add esp, 4
-    	; Zwolnienie mutexu
-    	mov dword [mutexvar], 0
-    	jmp .done
+    ; Zwolnienie mutexu
+    mov dword [mutexvar], 0
+    jmp .done
 
 	.insufficient:
-    	; Obsługa niewystarczających środków
    	 push msg
 	 call printf
 	 add esp,4
-
-    	; Zwolnienie mutexu
-    	mov dword [mutexvar], 0
-
-    	jmp .done
+     ; Zwolnienie mutexu
+     mov dword [mutexvar], 0
+     jmp .done
 
 	.done:
 	mov eax, [balance]
