@@ -46,7 +46,7 @@ withdrawing:
      jmp .done
 
 	.done:
-	mov eax, [balance]
+	mov eax, dword [balance]
     	leave
     	ret
 
