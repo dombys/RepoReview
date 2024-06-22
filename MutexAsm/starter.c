@@ -9,8 +9,8 @@ extern int withdrawing();
 
 void *dowyplaty() {
     while(true){
-      int miau = withdrawing();
-      printf("%d\n", miau);
+      int account_balance_result = withdrawing();
+      printf("%d\n", account_balance_result);
       return 0;
 }
 }
