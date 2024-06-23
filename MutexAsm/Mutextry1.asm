@@ -25,15 +25,15 @@ withdrawing:
 	push dword [sleep_time] ;dodane tylko, by w gdb mozna bylo
 	call sleep				;jak 2. watek sie zapetla na spinlocku
 	add esp, 4
-    mov ecx, dword [balance]  ; saldo konta do ecx
-    cmp ecx, 700                ;wystarczajaco funduszy ?
-    jb .insufficient             
+    	mov ecx, dword [balance]  ; saldo konta do ecx
+   	cmp ecx, 700                ;wystarczajaco funduszy ?
+    	jb .insufficient             
 	sub ecx, 700                
-    mov dword [balance], ecx  ; aktualizauj saldo po wyplacie
+    	mov dword [balance], ecx  ; aktualizauj saldo po wyplacie
 	push msg1
 	call printf
 	add esp, 4
-    ; Zwolnienie mutexu
+     ;Zwolnienie mutexu
     mov dword [mutexvar], 0
     jmp .done
 
