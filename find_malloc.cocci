@@ -1,5 +1,5 @@
 @find_malloc@
-expression E1, E2, x;
+expression E, x;
 @@
 
-*x = malloc(E1,E2)
+* x=malloc(E);
